@@ -109,4 +109,4 @@ fetch(config.DATA_URL)
       // const used = process.memoryUsage().heapUsed / 1024 / 1024;
       // console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error('error:', error));
