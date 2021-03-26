@@ -5,7 +5,7 @@ const config = require('./config.js');
 const twilioClient = require('twilio')(config.TWILIO_ACCOUNT_SID, config.TWILIO_AUTH_TOKEN);
 
 let datastore = {
-  lastChange: null,
+  lastCheck: null,
   proximateIds: [],
 };
 
@@ -83,11 +83,6 @@ fetch(config.DATA_URL)
       console.log(body);
 
       if (HAS_NEW_DATA) {
-        console.log('writing...');
-        datastore.lastChange = new Date();
-        const data = JSON.stringify(datastore, null, 2);
-        fs.writeFileSync(config.DATASTORE_PATH, data, 'utf8');
-
         console.log('sending...');
         return Promise.all(
           config.TO_NUMBERS.map((number) => {
@@ -99,6 +94,11 @@ fetch(config.DATA_URL)
           })
         );
       }
+
+      console.log('writing...');
+      datastore.lastCheck = new Date();
+      const data = JSON.stringify(datastore, null, 2);
+      fs.writeFileSync(config.DATASTORE_PATH, data, 'utf8');
     })
     .then(message => {
       if (message && HAS_NEW_DATA) {
