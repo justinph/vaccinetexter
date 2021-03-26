@@ -82,6 +82,11 @@ fetch(config.DATA_URL)
       const body = messageArr.join('\n').trim();
       console.log(body);
 
+      console.log('writing...');
+      datastore.lastCheck = new Date();
+      const data = JSON.stringify(datastore, null, 2);
+      fs.writeFileSync(config.DATASTORE_PATH, data, 'utf8');
+
       if (HAS_NEW_DATA) {
         console.log('sending...');
         return Promise.all(
@@ -94,11 +99,6 @@ fetch(config.DATA_URL)
           })
         );
       }
-
-      console.log('writing...');
-      datastore.lastCheck = new Date();
-      const data = JSON.stringify(datastore, null, 2);
-      fs.writeFileSync(config.DATASTORE_PATH, data, 'utf8');
     })
     .then(message => {
       if (message && HAS_NEW_DATA) {
