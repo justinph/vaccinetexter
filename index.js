@@ -33,6 +33,8 @@ const distanceFromHome = (lat, lng) => {
 let HAS_NEW_DATA = false;
 let messageArr= [];
 
+console.log('new run', new Date());
+
 fetch(config.DATA_URL)
     .then(res => res.json())
     .then(json => {
