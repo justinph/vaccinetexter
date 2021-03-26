@@ -101,8 +101,8 @@ fetch(config.DATA_URL)
           })
         );
       }
+      console.log('done');
     })
-    console.log('done');
     .then(message => {
       if (message && HAS_NEW_DATA) {
          console.log(`sent!`);
