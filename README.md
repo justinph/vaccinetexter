@@ -13,7 +13,7 @@ This very simple node script will help notify you or your loved ones of availabl
 
 1. Clone this package
 2. Run `yarn` to install the dependencies
-3. Configure by editing `config.js`.
+3. Configure by copying `config.example.js` into `config.js` and update the necessary values.
 4. Run: `node index.js`.
 
 I use a cron job every 5 minutes on a very basic cloud instance. It works well.
