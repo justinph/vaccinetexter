@@ -43,7 +43,7 @@ fetch(config.DATA_URL)
       }
       // filter by available first dose appointments
       const hasAppts = json.features.filter(ftr =>
-        ftr.properties.appointments_available && !ftr.properties.appointments_available_2nd_dose_only
+        ftr.properties.appointments_available && !ftr.properties.appointments_available_2nd_dose_only && ftr.properties.appointments.length >= config.MIN_APPOINTMENTS
       ).map(ftr => {
         const lat = ftr.geometry.coordinates[1];
         const lng = ftr.geometry.coordinates[0];
