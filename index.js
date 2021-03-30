@@ -50,7 +50,7 @@ fetch(config.DATA_URL)
         const distance = distanceFromHome(lat, lng);
         return { distance, ...ftr };
       })
-      messageArr.push(`Appt locs in MN: ${hasAppts.length}`);
+      messageArr.push(`Appt locs in State: ${hasAppts.length}`);
 
 
       const hasApptsNearby = hasAppts.filter(ftr => ftr.distance <= config.MAX_DISTANCE)
